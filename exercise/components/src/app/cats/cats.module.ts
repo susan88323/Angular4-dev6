@@ -4,17 +4,23 @@ import { CommonModule } from "@angular/common";
 
 import { CatDetailComponent } from './cat-detail.component';
 import { CatYearsPipe } from './cat-years.pipe';
+import { CatRoutingModule } from "./cat-routing.module";
+import { SharedModule } from "../shared/shared.module";
+import { CatsComponent } from "./cats.component";
+
 
 
 @NgModule({
   declarations: [
     CatDetailComponent,
-    CatYearsPipe
+    CatYearsPipe,
+    CatsComponent
   ],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    CatRoutingModule,
+    SharedModule
   ],
-  exports: [CatDetailComponent],
 })
 export class CatsModule { }

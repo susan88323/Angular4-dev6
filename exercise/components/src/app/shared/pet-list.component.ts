@@ -1,4 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from "@angular/core";
+import {Router} from "@angular/router";
+
 import {Pet} from "./pet";
 import {PetService} from "../core/pet.service";
 
@@ -8,15 +10,16 @@ import {PetService} from "../core/pet.service";
 })
 export class PetListComponent implements OnInit {
     pets: Pet[];
-    @Output() selectedPet: EventEmitter<Pet> = new EventEmitter<Pet>();
+  	favouritePet: Pet;
 
-    constructor(private petService: PetService) {}
+    constructor(private petService: PetService, private router: Router) {}
 
-    ngOnInit (): any {
+    ngOnInit () {
         this.pets = this.petService.getPetList();
+        this.favouritePet = this.petService.favouritePet;
     }
 
-    selectPet(pet: Pet): any {
-        this.selectedPet.emit(pet);
+    selectPet(pet: Pet) {
+        this.router.navigate(['cats', pet.id]);
     }
 }
