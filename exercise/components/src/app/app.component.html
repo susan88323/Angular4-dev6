@@ -1,0 +1,9 @@
+<h1>Herding Cats</h1>
+
+<div>Favourite Cat: {{favouriteCat?.name}}</div>
+
+<ul>
+	<li *ngFor="let cat of cats" (click)="selectCat(cat)">{{cat.name}}</li>
+</ul>
+
+<cat-detail *ngIf="selectedCat" [cat]="selectedCat" (isFavourite)="selectFavourite($event)"></cat-detail>
