@@ -3,22 +3,22 @@ import { NgModule } from '@angular/core';
 import {FormsModule} from "@angular/forms";
 
 import { AppComponent } from './app.component';
-import { CatDetailComponent } from './cat-detail.component';
-import { CatYearsPipe } from './cat-years.pipe';
-import { CatService } from './cat.service';
+import { CatsModule } from './cats/cats.module';
+import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    CatDetailComponent,
-    CatYearsPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    CatsModule,
+    CoreModule,
+    SharedModule
   ],
-  providers: [CatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

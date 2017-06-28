@@ -1,31 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-
-import {Cat} from './Cat';
-import {CatService} from './cat.service';
+import {Component, OnInit} from "@angular/core";
+import {Pet} from "./shared/pet";
+import { PetService } from "./core/pet.service";
 
 @Component({
-  selector: 'herding-cats',
-  template: require("./app.component.html")
+	selector: "herding-cats",
+	template: require("./app.component.html")
 })
 export class AppComponent implements OnInit {
-	constructor(private catService: CatService) {}
 
-	cats: Cat[];
-
-	selectedCat: Cat;
-	favouriteCat: Cat;
-
-	ngOnInit() {
-		this.cats = this.catService.getCatList();
-		this.favouriteCat = this.catService.favouriteCat;
+	selectedPet: Pet;
+	favouritePet: Pet;
+	
+	constructor(private petService: PetService) {
 	}
 
-	selectCat(cat: Cat) {
-		this.selectedCat = cat;
+	ngOnInit(): void {
+		this.favouritePet = this.petService.favouritePet;
 	}
 
-	selectFavourite(cat: Cat) {
-		this.favouriteCat = cat;
-		this.catService.favouriteCat = this.favouriteCat;
+	selectPet(pet: Pet): void {
+		this.selectedPet = pet;
 	}
+
+	selectFavourite(pet: Pet): void {
+		this.favouritePet = pet;
+	}
+
+
 }
